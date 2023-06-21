@@ -1,0 +1,36 @@
+id: rfid_gate
+label: gate
+category: '[RFID]'
+
+templates:
+  imports: import rfid
+  make: rfid.gate(${sample_rate})
+
+
+parameters:
+- id: sample_rate
+  label: Sample Rate
+  dtype: int
+  default: '2000000'
+
+
+inputs:
+- label: in
+  domain: stream
+  dtype: complex
+  vlen: 1
+  optional: false
+
+outputs:
+- label: out
+  domain: stream
+  dtype: complex
+  vlen: 1
+  optional: false
+
+documentation: |
+        This block is responsible for identifying a reader's command.
+        The samples related to a reader's command are blocked and consumed.
+        Samples that belong to a Tag's message (RN16-EPC) are forwarded to the next block for further processing.
+file_format: 1
+

@@ -1,0 +1,39 @@
+id: rfid_reader
+label: reader
+category: '[RFID]'
+
+templates:
+  imports: import rfid
+  make: rfid.reader(${sample_rate}, ${dac_rate})
+
+
+parameters:
+- id: sample_rate
+  label: Sample Rate
+  dtype: int
+  default: '2000000'
+- id: dac_rate
+  label: DAC Rate
+  dtype: int
+  default: '2000000'
+
+
+inputs:
+- label: in
+  domain: stream
+  dtype: float
+  vlen: 1
+  optional: false
+
+outputs:
+- label: out
+  domain: stream
+  dtype: float
+  vlen: 1
+  optional: false
+
+documentation: |
+  This block represents a RFID reader.
+
+file_format: 1
+

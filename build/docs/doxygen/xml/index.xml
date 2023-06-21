@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.17">
+  <compound refid="classgr_1_1rfid_1_1gate" kind="class"><name>gr::rfid::gate</name>
+    <member refid="classgr_1_1rfid_1_1gate_1aa1447930908ef3e0bc1a055bdae3867d" kind="typedef"><name>sptr</name></member>
+    <member refid="classgr_1_1rfid_1_1gate_1ab191626d620d7e8a8adb69823bb621bd" kind="function"><name>make</name></member>
+  </compound>
+  <compound refid="classgr_1_1rfid_1_1gate__impl" kind="class"><name>gr::rfid::gate_impl</name>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1af3de4725220ca1cf50048c84f99bcc6e" kind="enum"><name>SIGNAL_STATE</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1af3de4725220ca1cf50048c84f99bcc6eafabddae3dc2357a77b3529c7f25950e9" kind="enumvalue"><name>NEG_EDGE</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1af3de4725220ca1cf50048c84f99bcc6ea04b38ba2e7c1f94257ab60641bdea026" kind="enumvalue"><name>POS_EDGE</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1a118d673d1163ebb086821433500c4fbf" kind="variable"><name>n_samples</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1a5c44fb087ba57e10d29aef6c2c38b2e7" kind="variable"><name>n_samples_T1</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1ac99d5b26cbfab05d13607fe464150ae4" kind="variable"><name>n_samples_PW</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1a7c39eb27c44c09ad2f1f3588dd4de540" kind="variable"><name>n_samples_TAG_BIT</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1a7a5c97b2a1876aa10ec6f7423ee1749f" kind="variable"><name>win_index</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1aed807482533361a559538835052f6733" kind="variable"><name>dc_index</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1a9fc2579219ccc565ba6dcc983def7c04" kind="variable"><name>win_length</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1a1aa1f2ea0dcaa888748c444aed29cbf6" kind="variable"><name>dc_length</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1ab2f2672f5986965479e2cd811174cf47" kind="variable"><name>s_rate</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1a7adab7dcd1e8130091c10d46ee574b01" kind="variable"><name>avg_ampl</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1a630c9a7a1ab1c82aa64381da1e0767bc" kind="variable"><name>num_pulses</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1a4aed172c4f9ba2124382080f5f91a3ee" kind="variable"><name>sample_thresh</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1a3527340a360ada73b0ddc8be5f29699b" kind="variable"><name>win_samples</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1a689b3e15befafbfd270b388663499c08" kind="variable"><name>cw_samples</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1a2486c7850944c4acdfb788b423027e6b" kind="variable"><name>dc_samples</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1ac610e98276a27e08e3ce9dcf5c08c76b" kind="variable"><name>dc_est</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1a36299ad797b36710110f5eb00689ee2a" kind="variable"><name>signal_state</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1a89914b926c0ed374962243a13e95e72c" kind="function"><name>gate_impl</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1a9c1eec2315ee07b2ff64c798782d5956" kind="function"><name>~gate_impl</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1a603ebbe8c27030e87167a72eb5e0fa04" kind="function"><name>forecast</name></member>
+    <member refid="classgr_1_1rfid_1_1gate__impl_1afab68c2cdfe1529b35fb33491f09b94b" kind="function"><name>general_work</name></member>
+  </compound>
+  <compound refid="namespacegr" kind="namespace"><name>gr</name>
+  </compound>
+  <compound refid="namespacegr_1_1rfid" kind="namespace"><name>gr::rfid</name>
+  </compound>
+  <compound refid="namespacestd" kind="namespace"><name>std</name>
+  </compound>
+  <compound refid="api_8h" kind="file"><name>api.h</name>
+    <member refid="api_8h_1a8b664d0567d96e56db2576032ff26bb6" kind="define"><name>RFID_API</name></member>
+  </compound>
+  <compound refid="gate_8h" kind="file"><name>gate.h</name>
+  </compound>
+  <compound refid="gate__impl_8h" kind="file"><name>gate_impl.h</name>
+  </compound>
+  <compound refid="group__defs_8dox" kind="file"><name>group_defs.dox</name>
+  </compound>
+  <compound refid="main__page_8dox" kind="file"><name>main_page.dox</name>
+  </compound>
+  <compound refid="group__block" kind="group"><name>block</name>
+  </compound>
+  <compound refid="dir_49e56c817e5e54854c35e136979f97ca" kind="dir"><name>docs</name>
+  </compound>
+  <compound refid="dir_359d2bec989c9a8deeeb9aee335c1c76" kind="dir"><name>doxygen</name>
+  </compound>
+  <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>include</name>
+  </compound>
+  <compound refid="dir_97aefd0d527b934f1d99a682da8fe6a9" kind="dir"><name>lib</name>
+  </compound>
+  <compound refid="dir_f2cd86917185299abf5a1f0679072f3c" kind="dir"><name>other</name>
+  </compound>
+  <compound refid="dir_e39922f9597dfb000da5adf7eb00c0a7" kind="dir"><name>rfid</name>
+  </compound>
+  <compound refid="indexpage" kind="page"><name>index</name>
+  </compound>
+</doxygenindex>

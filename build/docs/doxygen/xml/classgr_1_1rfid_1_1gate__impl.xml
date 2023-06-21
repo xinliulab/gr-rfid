@@ -1,0 +1,407 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classgr_1_1rfid_1_1gate__impl" kind="class" language="C++" prot="public">
+    <compoundname>gr::rfid::gate_impl</compoundname>
+    <basecompoundref refid="classgr_1_1rfid_1_1gate" prot="public" virt="non-virtual">gr::rfid::gate</basecompoundref>
+    <includes refid="gate__impl_8h" local="no">gate_impl.h</includes>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classgr_1_1rfid_1_1gate__impl_1af3de4725220ca1cf50048c84f99bcc6e" prot="private" static="no" strong="no">
+        <type></type>
+        <name>SIGNAL_STATE</name>
+        <enumvalue id="classgr_1_1rfid_1_1gate__impl_1af3de4725220ca1cf50048c84f99bcc6eafabddae3dc2357a77b3529c7f25950e9" prot="private">
+          <name>NEG_EDGE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classgr_1_1rfid_1_1gate__impl_1af3de4725220ca1cf50048c84f99bcc6ea04b38ba2e7c1f94257ab60641bdea026" prot="private">
+          <name>POS_EDGE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="34" column="18" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="34" bodyend="34"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1a118d673d1163ebb086821433500c4fbf" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::rfid::gate_impl::n_samples</definition>
+        <argsstring></argsstring>
+        <name>n_samples</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="36" column="7" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1a5c44fb087ba57e10d29aef6c2c38b2e7" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::rfid::gate_impl::n_samples_T1</definition>
+        <argsstring></argsstring>
+        <name>n_samples_T1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="36" column="17" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1ac99d5b26cbfab05d13607fe464150ae4" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::rfid::gate_impl::n_samples_PW</definition>
+        <argsstring></argsstring>
+        <name>n_samples_PW</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="36" column="30" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1a7c39eb27c44c09ad2f1f3588dd4de540" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::rfid::gate_impl::n_samples_TAG_BIT</definition>
+        <argsstring></argsstring>
+        <name>n_samples_TAG_BIT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="36" column="43" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1a7a5c97b2a1876aa10ec6f7423ee1749f" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::rfid::gate_impl::win_index</definition>
+        <argsstring></argsstring>
+        <name>win_index</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="37" column="6" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1aed807482533361a559538835052f6733" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::rfid::gate_impl::dc_index</definition>
+        <argsstring></argsstring>
+        <name>dc_index</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="37" column="16" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1a9fc2579219ccc565ba6dcc983def7c04" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::rfid::gate_impl::win_length</definition>
+        <argsstring></argsstring>
+        <name>win_length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="37" column="25" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1a1aa1f2ea0dcaa888748c444aed29cbf6" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::rfid::gate_impl::dc_length</definition>
+        <argsstring></argsstring>
+        <name>dc_length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="37" column="36" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1ab2f2672f5986965479e2cd811174cf47" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::rfid::gate_impl::s_rate</definition>
+        <argsstring></argsstring>
+        <name>s_rate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="37" column="46" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1a7adab7dcd1e8130091c10d46ee574b01" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float gr::rfid::gate_impl::avg_ampl</definition>
+        <argsstring></argsstring>
+        <name>avg_ampl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="38" column="7" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1a630c9a7a1ab1c82aa64381da1e0767bc" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float gr::rfid::gate_impl::num_pulses</definition>
+        <argsstring></argsstring>
+        <name>num_pulses</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="38" column="16" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1a4aed172c4f9ba2124382080f5f91a3ee" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float gr::rfid::gate_impl::sample_thresh</definition>
+        <argsstring></argsstring>
+        <name>sample_thresh</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="38" column="27" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1a3527340a360ada73b0ddc8be5f29699b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt;float&gt; gr::rfid::gate_impl::win_samples</definition>
+        <argsstring></argsstring>
+        <name>win_samples</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="40" column="13" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1a689b3e15befafbfd270b388663499c08" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt;float&gt; gr::rfid::gate_impl::cw_samples</definition>
+        <argsstring></argsstring>
+        <name>cw_samples</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="40" column="24" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1a2486c7850944c4acdfb788b423027e6b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; gr_complex &gt;</type>
+        <definition>std::vector&lt;gr_complex&gt; gr::rfid::gate_impl::dc_samples</definition>
+        <argsstring></argsstring>
+        <name>dc_samples</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="41" column="13" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1ac610e98276a27e08e3ce9dcf5c08c76b" prot="private" static="no" mutable="no">
+        <type>gr_complex</type>
+        <definition>gr_complex gr::rfid::gate_impl::dc_est</definition>
+        <argsstring></argsstring>
+        <name>dc_est</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="42" column="12" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1rfid_1_1gate__impl_1a36299ad797b36710110f5eb00689ee2a" prot="private" static="no" mutable="no">
+        <type>SIGNAL_STATE</type>
+        <definition>SIGNAL_STATE gr::rfid::gate_impl::signal_state</definition>
+        <argsstring></argsstring>
+        <name>signal_state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="44" column="14" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classgr_1_1rfid_1_1gate__impl_1a89914b926c0ed374962243a13e95e72c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::rfid::gate_impl::gate_impl</definition>
+        <argsstring>(int sample_rate)</argsstring>
+        <name>gate_impl</name>
+        <param>
+          <type>int</type>
+          <declname>sample_rate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="47" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1rfid_1_1gate__impl_1a9c1eec2315ee07b2ff64c798782d5956" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::rfid::gate_impl::~gate_impl</definition>
+        <argsstring>()</argsstring>
+        <name>~gate_impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="48" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1rfid_1_1gate__impl_1a603ebbe8c27030e87167a72eb5e0fa04" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::rfid::gate_impl::forecast</definition>
+        <argsstring>(int noutput_items, gr_vector_int &amp;ninput_items_required)</argsstring>
+        <name>forecast</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_int &amp;</type>
+          <declname>ninput_items_required</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="50" column="6"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1rfid_1_1gate__impl_1afab68c2cdfe1529b35fb33491f09b94b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::rfid::gate_impl::general_work</definition>
+        <argsstring>(int noutput_items, gr_vector_int &amp;ninput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>general_work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="52" column="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>gr::rfid::gate_impl</label>
+        <link refid="classgr_1_1rfid_1_1gate__impl"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>gr::block</label>
+      </node>
+      <node id="2">
+        <label>gr::rfid::gate</label>
+        <link refid="classgr_1_1rfid_1_1gate"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>gr::rfid::gate_impl</label>
+        <link refid="classgr_1_1rfid_1_1gate__impl"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>gr::block</label>
+      </node>
+      <node id="2">
+        <label>gr::rfid::gate</label>
+        <link refid="classgr_1_1rfid_1_1gate"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/xin/gr-rfid/lib/gate_impl.h" line="31" column="1" bodyfile="/home/xin/gr-rfid/lib/gate_impl.h" bodystart="30" bodyend="56"/>
+    <listofallmembers>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1a7adab7dcd1e8130091c10d46ee574b01" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>avg_ampl</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1a689b3e15befafbfd270b388663499c08" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>cw_samples</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1ac610e98276a27e08e3ce9dcf5c08c76b" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>dc_est</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1aed807482533361a559538835052f6733" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>dc_index</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1a1aa1f2ea0dcaa888748c444aed29cbf6" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>dc_length</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1a2486c7850944c4acdfb788b423027e6b" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>dc_samples</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1a603ebbe8c27030e87167a72eb5e0fa04" prot="public" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>forecast</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1a89914b926c0ed374962243a13e95e72c" prot="public" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>gate_impl</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1afab68c2cdfe1529b35fb33491f09b94b" prot="public" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>general_work</name></member>
+      <member refid="classgr_1_1rfid_1_1gate_1ab191626d620d7e8a8adb69823bb621bd" prot="public" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>make</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1a118d673d1163ebb086821433500c4fbf" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>n_samples</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1ac99d5b26cbfab05d13607fe464150ae4" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>n_samples_PW</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1a5c44fb087ba57e10d29aef6c2c38b2e7" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>n_samples_T1</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1a7c39eb27c44c09ad2f1f3588dd4de540" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>n_samples_TAG_BIT</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1af3de4725220ca1cf50048c84f99bcc6eafabddae3dc2357a77b3529c7f25950e9" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>NEG_EDGE</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1a630c9a7a1ab1c82aa64381da1e0767bc" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>num_pulses</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1af3de4725220ca1cf50048c84f99bcc6ea04b38ba2e7c1f94257ab60641bdea026" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>POS_EDGE</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1ab2f2672f5986965479e2cd811174cf47" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>s_rate</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1a4aed172c4f9ba2124382080f5f91a3ee" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>sample_thresh</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1af3de4725220ca1cf50048c84f99bcc6e" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>SIGNAL_STATE</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1a36299ad797b36710110f5eb00689ee2a" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>signal_state</name></member>
+      <member refid="classgr_1_1rfid_1_1gate_1aa1447930908ef3e0bc1a055bdae3867d" prot="public" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>sptr</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1a7a5c97b2a1876aa10ec6f7423ee1749f" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>win_index</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1a9fc2579219ccc565ba6dcc983def7c04" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>win_length</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1a3527340a360ada73b0ddc8be5f29699b" prot="private" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>win_samples</name></member>
+      <member refid="classgr_1_1rfid_1_1gate__impl_1a9c1eec2315ee07b2ff64c798782d5956" prot="public" virt="non-virtual"><scope>gr::rfid::gate_impl</scope><name>~gate_impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

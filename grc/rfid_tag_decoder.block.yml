@@ -1,0 +1,37 @@
+id: rfid_tag_decoder
+label: Tag Decoder
+category: '[RFID]'
+
+templates:
+  imports: import rfid
+  make: rfid.tag_decoder(${sample_rate})
+
+parameters:
+- id: sample_rate
+  label: Sample Rate
+  dtype: int
+  default: '2000000'
+
+inputs:
+- label: in
+  domain: stream
+  dtype: complex
+  vlen: 1
+  optional: false
+
+outputs:
+- label: out1
+  domain: stream
+  dtype: float
+  vlen: 1
+  optional: false
+- label: out2
+  domain: stream
+  dtype: complex
+  vlen: 1
+  optional: false
+
+documentation: |
+  This block represents a RFID tag decoder.
+
+file_format: 1
