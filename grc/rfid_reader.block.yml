@@ -1,5 +1,5 @@
 id: rfid_reader
-label: reader
+label: Reader
 category: '[RFID]'
 
 templates:
