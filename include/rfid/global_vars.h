@@ -108,7 +108,7 @@ namespace gr {
     const int QUERY_LENGTH        = 22;  // Query length in bits
     
     const int T_READER_FREQ = 40e3;     // BLF = 40kHz
-    const float TAG_BIT_D   = 1.0/T_READER_FREQ * pow(10,6); // Duration in us
+    const float TAG_BIT_D   = 1.0/T_READER_FREQ * pow(10,6); // Duration is 25 us
     const int RN16_D        = (RN16_BITS + TAG_PREAMBLE_BITS) * TAG_BIT_D;
     const int EPC_D          = (EPC_BITS  + TAG_PREAMBLE_BITS) * TAG_BIT_D;
     // Query command 

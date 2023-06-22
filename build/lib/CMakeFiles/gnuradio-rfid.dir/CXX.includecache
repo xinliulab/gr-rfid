@@ -10,7 +10,7 @@
 gnuradio/attributes.h
 -
 
-../include/rfid/tag_decoder.h
+../include/rfid/gate.h
 rfid/api.h
 -
 gnuradio/block.h
@@ -24,33 +24,23 @@ map
 sys/time.h
 -
 
-/home/xin/gr-rfid/lib/tag_decoder_impl.cc
+/home/xin/gr-rfid/lib/gate_impl.cc
 config.h
 /home/xin/gr-rfid/lib/config.h
-gnuradio/io_signature.h
--
-gnuradio/prefs.h
--
-gnuradio/math.h
--
-cmath
+iostream
 -
 sys/time.h
 -
-tag_decoder_impl.h
-/home/xin/gr-rfid/lib/tag_decoder_impl.h
+gnuradio/io_signature.h
+-
+gate_impl.h
+/home/xin/gr-rfid/lib/gate_impl.h
 
-/home/xin/gr-rfid/lib/tag_decoder_impl.h
-rfid/tag_decoder.h
+/home/xin/gr-rfid/lib/gate_impl.h
+rfid/gate.h
 -
 vector
 -
 ../include/rfid/global_vars.h
 /home/xin/gr-rfid/include/rfid/global_vars.h
-time.h
--
-numeric
--
-fstream
--
 

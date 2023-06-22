@@ -22,9 +22,11 @@
 #include "config.h"
 #endif
 
+#include <iostream>
+#include <sys/time.h>
 #include <gnuradio/io_signature.h>
 #include "gate_impl.h"
-#include <sys/time.h>
+
 
 namespace gr {
 	namespace rfid {
@@ -38,59 +40,40 @@ namespace gr {
 		/*
 		 * The private constructor
 		 */
-		gate_impl::gate_impl(int sample_rate)
-			: gr::block("gate",
-							gr::io_signature::make(1, 1, sizeof(gr_complex)),
-							gr::io_signature::make(1, 1, sizeof(gr_complex))),
-							n_samples(0), win_index(0), dc_index(0), num_pulses(0), signal_state(NEG_EDGE), avg_ampl(0), dc_est(0,0)
+		gate_impl::gate_impl(int sample_rate): gr::block("gate",
+			gr::io_signature::make(1, 1, sizeof(gr_complex)),
+			gr::io_signature::make(1, 1, sizeof(gr_complex))),
+			n_samples(0), win_index(0), dc_index(0), num_pulses(0), signal_state(NEG_EDGE), avg_ampl(0), dc_est(0,0)
 		{
+			// Time from Interrogator transmission to Tag response (250 us)
+			n_samples_T1		= T1_D		* (sample_rate / pow(10,6));	// 240 us * (400khz / 1M) = 96 samples
+			std::cout << "T1 is the duration from Interrogator transmission to Tag response (250 us). The number of samples in T1 is" << n_samples_T1 << std::endl;
 
-			n_samples_T1       = T1_D       * (sample_rate / pow(10,6));
-			n_samples_PW       = PW_D       * (sample_rate / pow(10,6));
-			n_samples_TAG_BIT = TAG_BIT_D * (sample_rate / pow(10,6));
+			n_samples_PW		= PW_D		* (sample_rate / pow(10,6));	// 12 us * (400khz / 1M) = 4 samples (not 4.8)
+			std::cout << "PW samples : " << n_samples_PW << std::endl;
+
+			// how many samples can represent a tag bit
+			n_samples_TAG_BIT	= TAG_BIT_D * (sample_rate / pow(10,6));	// 25 us * (400khz / 1M) = 10 samples
+			std::cout << "Samples of 1 Tag bit (40kbps): " << n_samples_TAG_BIT << std::endl;
+
+
+			win_length = WIN_SIZE_D * (sample_rate/ pow(10,6)); // 250 us * (400khz / 1M) = 100 samples
+			std::cout << "Size of window : " << win_length << std::endl;
+
+		
+			std::cout << "Duration of window for dc offset estimation : " << DC_SIZE_D << std::endl;
 			
-			win_length = WIN_SIZE_D * (sample_rate/ pow(10,6));
-			dc_length  = DC_SIZE_D  * (sample_rate / pow(10,6));
+			dc_length  = DC_SIZE_D  * (sample_rate / pow(10,6));// 120 us * (400khz / 1M) = 48 samples)
+			std::cout << "Size of window for dc offset estimation : " << dc_length << std::endl;
 
 			win_samples.resize(win_length);
 			dc_samples.resize(dc_length);
 
 			std::stringstream log_message;
 
-			log_message << "T1 samples : " << n_samples_T1;
-			GR_LOG_INFO(d_logger, log_message.str());
-			log_message.str(""); // clear stringstream
-			// GR_LOG_INFO(d_logger, "T1 samples : " << n_samples_T1);
-
-			log_message << "PW samples : " << n_samples_PW;
-			GR_LOG_INFO(d_logger, log_message.str());
-			log_message.str(""); // clear stringstream
-			// GR_LOG_INFO(d_logger, "PW samples : " << n_samples_PW);
-
-			log_message << "Samples of Tag bit : "<< n_samples_TAG_BIT;
-			GR_LOG_INFO(d_logger, log_message.str());
-			log_message.str(""); 
-			// GR_LOG_INFO(d_logger, "Samples of Tag bit : "<< n_samples_TAG_BIT);
-
-
-			log_message << "Size of window : " << win_length;
-			GR_LOG_INFO(d_logger, log_message.str());
-			log_message.str(""); 
-			// GR_LOG_INFO(d_logger, "Size of window : " << win_length);
-
-			log_message << "Size of window for dc offset estimation : " << dc_length;
-			GR_LOG_INFO(d_logger, log_message.str());
-			log_message.str(""); 
-			// GR_LOG_INFO(d_logger, "Size of window for dc offset estimation : " << dc_length);
-
-			log_message << "Duration of window for dc offset estimation : " << DC_SIZE_D << " us";
-			GR_LOG_INFO(d_logger, log_message.str());
-			log_message.str(""); 
-			// GR_LOG_INFO(d_logger, "Duration of window for dc offset estimation : " << DC_SIZE_D << " us");
-
-			
 			// First block to be scheduled
-			GR_LOG_INFO(d_logger, "Initializing reader state...");
+			std::cout << "Initializing reader state..." << std::endl;
+			
 			initialize_reader_state();
 		} 
 

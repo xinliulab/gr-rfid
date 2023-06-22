@@ -11,7 +11,7 @@ parameters:
 - id: sample_rate
   label: Sample Rate
   dtype: int
-  default: '2000000'
+  default: '400000'
 
 
 inputs:
