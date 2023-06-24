@@ -47,14 +47,14 @@ namespace gr {
 		{
 			// Time from Interrogator transmission to Tag response (250 us)
 			n_samples_T1		= T1_D		* (sample_rate / pow(10,6));	// 240 us * (400khz / 1M) = 96 samples
-			std::cout << "T1 is the duration from Interrogator transmission to Tag response (250 us). The number of samples in T1 is" << n_samples_T1 << std::endl;
+			std::cout << "T1 is the duration from Interrogator transmission to Tag response (250 us). The number of samples in T1 is " << n_samples_T1 << std::endl;
 
 			n_samples_PW		= PW_D		* (sample_rate / pow(10,6));	// 12 us * (400khz / 1M) = 4 samples (not 4.8)
 			std::cout << "PW samples : " << n_samples_PW << std::endl;
 
 			// how many samples can represent a tag bit
 			n_samples_TAG_BIT	= TAG_BIT_D * (sample_rate / pow(10,6));	// 25 us * (400khz / 1M) = 10 samples
-			std::cout << "Samples of 1 Tag bit (40kbps): " << n_samples_TAG_BIT << std::endl;
+			std::cout << "Samples of 1 Tag bit (40kHz): " << n_samples_TAG_BIT << std::endl;
 
 
 			win_length = WIN_SIZE_D * (sample_rate/ pow(10,6)); // 250 us * (400khz / 1M) = 100 samples
@@ -110,6 +110,7 @@ namespace gr {
 					 reader_state-> reader_stats.tag_reads.size() > NUMBER_UNIQUE_TAGS) &&  
 					 reader_state-> status != TERMINATED)
 			{
+				std::cout << " TERMINATED!!!" << std::endl;
 				reader_state-> status = TERMINATED;
 				gettimeofday (&reader_state-> reader_stats.end, NULL);
 				std::cout << "| Execution time : " << reader_state-> reader_stats.end.tv_sec - reader_state-> reader_stats.start.tv_sec << " seconds" << std::endl;
@@ -119,12 +120,14 @@ namespace gr {
 			// Gate block is controlled by the Gen2 Logic block
 			if(reader_state->gate_status == GATE_SEEK_EPC)
 			{
+				// std::cout << " GATE_SEEK_EPC!!!" << std::endl;
 				reader_state->gate_status = GATE_CLOSED;
 				reader_state->n_samples_to_ungate = (EPC_BITS + TAG_PREAMBLE_BITS) * n_samples_TAG_BIT + 2*n_samples_TAG_BIT;
 				n_samples = 0;
 			}
 			else if (reader_state->gate_status == GATE_SEEK_RN16)
 			{
+				// std::cout << " GATE_SEEK_RN16!!!" << std::endl;
 				reader_state->gate_status = GATE_CLOSED;
 				reader_state->n_samples_to_ungate = (RN16_BITS + TAG_PREAMBLE_BITS) * n_samples_TAG_BIT + 2*n_samples_TAG_BIT;
 				n_samples = 0;
@@ -132,9 +135,11 @@ namespace gr {
 			
 			if (reader_state->status == RUNNING)
 			{
+				// std::cout << " RUNNING!!!" << std::endl;
 				for(int i = 0; i < n_items; i++)
 				{
 					// Tracking average amplitude
+					// std::cout << n_items << std::endl;
 					sample_ampl = std::abs(in[i]);
 					avg_ampl = avg_ampl + (sample_ampl - win_samples[win_index])/win_length;  
 					win_samples[win_index] = sample_ampl; 
@@ -145,6 +150,8 @@ namespace gr {
 
 					if( !(reader_state->gate_status == GATE_OPEN) )
 					{
+						// std::cout << " GATE_OPEN!!!" << std::endl;
+						
 						//Tracking DC offset (only during T1)
 						dc_est =  dc_est + (in[i] - dc_samples[dc_index])/std::complex<float>(dc_length,0);  
 						dc_samples[dc_index] = in[i]; 
@@ -168,9 +175,10 @@ namespace gr {
 								num_pulses = 0; 
 							n_samples = 0;
 						}
-
+						// std::cout <<  n_samples << std::endl;
 						if(n_samples > n_samples_T1 && signal_state == POS_EDGE && num_pulses > NUM_PULSES_COMMAND)
 						{
+							// std::cout << " READER COMMAND DETECTED!!!" << std::endl;
 							GR_LOG_INFO(d_debug_logger, "READER COMMAND DETECTED");
 
 							reader_state->gate_status = GATE_OPEN;
@@ -189,6 +197,8 @@ namespace gr {
 					}
 					else
 					{
+						
+						// std::cout << " ELSE!!!" << std::endl;
 						n_samples++;
 
 						reader_state->magn_squared_samples.push_back(std::norm(in[i] - dc_est));

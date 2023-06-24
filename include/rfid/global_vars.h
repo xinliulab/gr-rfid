@@ -28,7 +28,7 @@
 namespace gr {
   namespace rfid {
 
-    enum STATUS               {RUNNING, TERMINATED};
+    enum STATUS             {RUNNING, TERMINATED};
     enum GEN2_LOGIC_STATUS  {SEND_QUERY, SEND_ACK, SEND_QUERY_REP, IDLE, SEND_CW, START, SEND_QUERY_ADJUST, SEND_NAK_QR, SEND_NAK_Q, POWER_DOWN}; 
     enum GATE_STATUS        {GATE_OPEN, GATE_CLOSED, GATE_SEEK_RN16, GATE_SEEK_EPC};  
     enum DECODER_STATUS     {DECODER_DECODE_RN16, DECODER_DECODE_EPC};
@@ -91,9 +91,9 @@ namespace gr {
     const int P_DOWN_D     = 2000;    // power down
     const int T1_D         = 240;    // Time from Interrogator transmission to Tag response (250 us)
     const int T2_D         = 480;    // Time from Tag response to Interrogator transmission. Max value = 20.0 * T_tag = 500us 
-    const int PW_D         = 12;      // Half Tari 
+    const int PW_D         = 12;      // Half Tari, pulse width 
     const int DELIM_D       = 12;      // A preamble shall comprise a fixed-length start delimiter 12.5us +/-5%
-    const int TRCAL_D     = 200;    // BLF = DR/TRCAL => 40e3 = 8/TRCAL => TRCAL = 200us
+    const int TRCAL_D     = 200;    // BLF = DataRrate / TRCAL => 40e3 = 8kbps / TRCAL => TRCAL = 200us
     const int RTCAL_D     = 72;      // 6*PW = 72us
 
     const int NUM_PULSES_COMMAND = 5;       // Number of pulses to detect a reader command

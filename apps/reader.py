@@ -8,8 +8,14 @@ from gnuradio import analog
 from gnuradio import digital
 from gnuradio import qtgui
 import rfid
+import os
 
-DEBUG = False
+print(os.getcwd())
+
+# print(dir(rfid))
+
+# DEBUG = False
+DEBUG = True
 
 class reader_top_block(gr.top_block):
 
@@ -26,7 +32,7 @@ class reader_top_block(gr.top_block):
     self.source.set_center_freq(self.freq, 0)
     self.source.set_gain(self.rx_gain, 0)
     self.source.set_antenna("RX2", 0)
-    #self.source.set_auto_dc_offset(False) # Uncomment this line for SBX daughterboard
+    # self.source.set_auto_dc_offset(False) # Uncomment this line for SBX daughterboard
 
   # Configure usrp sink
   def u_sink(self):
@@ -62,7 +68,6 @@ class reader_top_block(gr.top_block):
 
     self.usrp_address_source = "type=b200,serial=30B1FF8"
     self.usrp_address_sink   = "type=b200,serial=30B1FF8"
-
 
     # Each FM0 symbol consists of ADC_RATE/BLF samples (2e6/40e3 = 50 samples)
     # 10 samples per symbol after matched filtering and decimation

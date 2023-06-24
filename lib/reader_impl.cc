@@ -129,10 +129,22 @@ namespace gr {
       preamble.insert( preamble.end(), rtcal.begin(), rtcal.end() );
       preamble.insert( preamble.end(), trcal.begin(), trcal.end() );
 
+      // std::cout << "preamble samples' value:" << std::endl;
+      // for(auto val : preamble) {
+      //   std::cout << val << " ";
+      // }
+      // std::cout << std::endl;
+
       // create framesync
       frame_sync.insert( frame_sync.end(), delim.begin() , delim.end() );
       frame_sync.insert( frame_sync.end(), data_0.begin(), data_0.end() );
       frame_sync.insert( frame_sync.end(), rtcal.begin() , rtcal.end() );
+
+      // std::cout << "frame_sync samples' value:" << std::endl;
+      // for(auto val : frame_sync) {
+      //   std::cout << val << " ";
+      // }
+      // std::cout << std::endl;
       
       // create query rep
       query_rep.insert( query_rep.end(), frame_sync.begin(), frame_sync.end());
@@ -140,6 +152,12 @@ namespace gr {
       query_rep.insert( query_rep.end(), data_0.begin(), data_0.end() );
       query_rep.insert( query_rep.end(), data_0.begin(), data_0.end() );
       query_rep.insert( query_rep.end(), data_0.begin(), data_0.end() );
+
+      // std::cout << "query_rep samples' value:" << std::endl;
+      // for(auto val : query_rep) {
+      //   std::cout << val << " ";
+      // }
+      // std::cout << std::endl;
 
       // create nak
       nak.insert( nak.end(), frame_sync.begin(), frame_sync.end());
@@ -151,6 +169,12 @@ namespace gr {
       nak.insert( nak.end(), data_0.begin(), data_0.end() );
       nak.insert( nak.end(), data_0.begin(), data_0.end() );
       nak.insert( nak.end(), data_0.begin(), data_0.end() );
+
+      // std::cout << "nak samples' value:" << std::endl;
+      // for(auto val : nak) {
+      //   std::cout << val << " ";
+      // }
+      // std::cout << std::endl;
 
       gen_query_bits();
       gen_query_adjust_bits();
@@ -244,14 +268,15 @@ namespace gr {
       switch (reader_state->gen2_logic_status)
       {
         case START:
-          GR_LOG_INFO(d_debug_logger, "START");
-
+          // std::cout << " START!!!" << std::endl;
+          // GR_LOG_INFO(d_debug_logger, "START");
           memcpy(&out[written], &cw_ack[0], sizeof(float) * cw_ack.size() );
           written += cw_ack.size();
           reader_state->gen2_logic_status = SEND_QUERY;    
           break;
 
         case POWER_DOWN:
+          std::cout << " POWER_DOWN:!!!" << std::endl;
           GR_LOG_INFO(d_debug_logger, "POWER DOWN");
           memcpy(&out[written], &p_down[0], sizeof(float) * p_down.size() );
           written += p_down.size();
@@ -259,6 +284,7 @@ namespace gr {
           break;
 
         case SEND_NAK_QR:
+          std::cout << " SEND_NAK_QR!!!" << std::endl;
           GR_LOG_INFO(d_debug_logger, "SEND NAK");
           memcpy(&out[written], &nak[0], sizeof(float) * nak.size() );
           written += nak.size();
@@ -268,6 +294,7 @@ namespace gr {
           break;
 
         case SEND_NAK_Q:
+          std::cout << " SEND_NAK_QR!!!" << std::endl;
           GR_LOG_INFO(d_debug_logger, "SEND NAK");
           memcpy(&out[written], &nak[0], sizeof(float) * nak.size() );
           written += nak.size();
@@ -282,9 +309,10 @@ namespace gr {
           {
             std::cout << "Running " << std::endl;
           }*/
-
-          GR_LOG_INFO(d_debug_logger, "QUERY");
-          GR_LOG_INFO(d_debug_logger, "INVENTORY ROUND : " + std::to_string(reader_state->reader_stats.cur_inventory_round) + " SLOT NUMBER : " + std::to_string(reader_state->reader_stats.cur_slot_number));
+          // std::cout << " QUERY!!!" << std::endl;
+          // std::cout << "INVENTORY ROUND : " + std::to_string(reader_state->reader_stats.cur_inventory_round) + " SLOT NUMBER : " + std::to_string(reader_state->reader_stats.cur_slot_number) << std::endl;
+          // GR_LOG_INFO(d_debug_logger, "QUERY");
+          // GR_LOG_INFO(d_debug_logger, "INVENTORY ROUND : " + std::to_string(reader_state->reader_stats.cur_inventory_round) + " SLOT NUMBER : " + std::to_string(reader_state->reader_stats.cur_slot_number));
 
           reader_state->reader_stats.n_queries_sent +=1;  
           // Controls the other two blocks
@@ -316,6 +344,7 @@ namespace gr {
           break;
 
         case SEND_ACK:
+          // std::cout << " SEND_ACK!!!" << std::endl;
           GR_LOG_INFO(d_debug_logger, "SEND ACK");
           if (ninput_items[0] == RN16_BITS - 1)
           {
@@ -348,6 +377,7 @@ namespace gr {
           break;
 
         case SEND_CW:
+          // std::cout << " SEND_CW!!!" << std::endl;
           GR_LOG_INFO(d_debug_logger, "SEND CW");
           memcpy(&out[written], &cw_ack[0], sizeof(float) * cw_ack.size() );
           written += cw_ack.size();
@@ -355,6 +385,7 @@ namespace gr {
           break;
 
         case SEND_QUERY_REP:
+          std::cout << " END_QUERY_REP!!!" << std::endl;
           GR_LOG_INFO(d_debug_logger, "SEND QUERY_REP");
           GR_LOG_INFO(d_debug_logger, "INVENTORY ROUND : " + std::to_string(reader_state->reader_stats.cur_inventory_round) + " SLOT NUMBER : " +  std::to_string(reader_state->reader_stats.cur_slot_number));
           // Controls the other two blocks
@@ -372,6 +403,7 @@ namespace gr {
           break;
       
         case SEND_QUERY_ADJUST:
+          std::cout << " END_QUERY_REP!!!" << std::endl;
           GR_LOG_INFO(d_debug_logger, "SEND QUERY_ADJUST");
           // Controls the other two blocks
           reader_state->decoder_status = DECODER_DECODE_RN16;
@@ -401,8 +433,11 @@ namespace gr {
 
         default:
           // IDLE
+          // std::cout << " IDLE!!!" << std::endl;
           break;
       }
+
+      // std::cout << " BREAK!!!" << std::endl;
       consume_each (consumed);
       return  written;
     }

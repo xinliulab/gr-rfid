@@ -20,6 +20,7 @@ if __name__ == '__main__':
         except:
             print("Warning: failed to XInitThreads()")
 
+from gnuradio import analog
 from gnuradio import blocks
 from gnuradio import filter
 from gnuradio.filter import firdes
@@ -101,13 +102,16 @@ class rfid_test(gr.top_block, Qt.QWidget):
             uhd.stream_args(
                 cpu_format="fc32",
                 args='',
-                channels=list(range(0,1)),
+                channels=list(range(0,2)),
             ),
             '',
         )
         self.uhd_usrp_sink_0.set_center_freq(freq, 0)
         self.uhd_usrp_sink_0.set_gain(tx_gain, 0)
         self.uhd_usrp_sink_0.set_antenna('TX/RX', 0)
+        self.uhd_usrp_sink_0.set_center_freq(0, 1)
+        self.uhd_usrp_sink_0.set_gain(0, 1)
+        self.uhd_usrp_sink_0.set_antenna('TX/RX', 1)
         self.uhd_usrp_sink_0.set_samp_rate(dac_rate)
         self.uhd_usrp_sink_0.set_time_unknown_pps(uhd.time_spec())
         self.rfid_tag_decoder_0 = rfid.tag_decoder(adc_rate//decim)
@@ -127,12 +131,14 @@ class rfid_test(gr.top_block, Qt.QWidget):
         self.blocks_file_sink_1.set_unbuffered(False)
         self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_gr_complex*1, '/home/xin/gr-rfid/misc/data/matched_filter', False)
         self.blocks_file_sink_0.set_unbuffered(False)
+        self.analog_const_source_x_0 = analog.sig_source_c(0, analog.GR_CONST_WAVE, 0, 0, 0)
 
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.blocks_float_to_complex_0, 0), (self.uhd_usrp_sink_0, 0))
+        self.connect((self.analog_const_source_x_0, 0), (self.uhd_usrp_sink_0, 0))
+        self.connect((self.blocks_float_to_complex_0, 0), (self.uhd_usrp_sink_0, 1))
         self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_float_to_complex_0, 0))
         self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_float_to_complex_0, 1))
         self.connect((self.fir_filter_xxx_0, 0), (self.blocks_file_sink_0, 0))

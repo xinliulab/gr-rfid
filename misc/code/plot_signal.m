@@ -2,7 +2,7 @@ clc
 clear all
 close all
 
-fi_1 = fopen('../data/source','rb');
+fi_1 = fopen('../data/file_source_test','rb');
 x_inter_1 = fread(fi_1, 'float32');
 
 % if data is complex

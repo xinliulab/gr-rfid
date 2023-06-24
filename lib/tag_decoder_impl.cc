@@ -222,6 +222,7 @@ namespace gr {
       // Processing only after n_samples_to_ungate are available and we need to decode an RN16
       if (reader_state->decoder_status == DECODER_DECODE_RN16 && ninput_items[0] >= reader_state->n_samples_to_ungate)
       {
+        // std::cout << " Decoder Work!!!" << std::endl;
         RN16_index = tag_sync(in,ninput_items[0]);
 
         /*
@@ -290,6 +291,8 @@ namespace gr {
       }
       else if (reader_state->decoder_status == DECODER_DECODE_EPC && ninput_items[0] >= reader_state->n_samples_to_ungate )
       {  
+        
+        // std::cout << " Decoder!!!" << std::endl;
 
         //After EPC message send a query rep or query
         reader_state->reader_stats.cur_slot_number++;
