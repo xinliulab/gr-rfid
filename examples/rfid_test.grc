@@ -569,7 +569,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [424, 116.0]
+    coordinate: [320, 124.0]
     rotation: 180
     state: disabled
 - name: uhd_usrp_source_0

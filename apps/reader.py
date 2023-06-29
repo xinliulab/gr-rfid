@@ -1,4 +1,4 @@
-#Developed by: Nikos Kargas 
+#Developed by: Nikos Kargas
 
 from gnuradio import gr
 from gnuradio import uhd
@@ -8,8 +8,14 @@ from gnuradio import analog
 from gnuradio import digital
 from gnuradio import qtgui
 import rfid
+import os
+
+print(os.getcwd())
+
+# print(dir(rfid))
 
 DEBUG = False
+# DEBUG = True
 
 class reader_top_block(gr.top_block):
 
@@ -26,7 +32,7 @@ class reader_top_block(gr.top_block):
     self.source.set_center_freq(self.freq, 0)
     self.source.set_gain(self.rx_gain, 0)
     self.source.set_antenna("RX2", 0)
-    #self.source.set_auto_dc_offset(False) # Uncomment this line for SBX daughterboard
+    self.source.set_auto_dc_offset(False) # Uncomment this line for SBX daughterboard
 
   # Configure usrp sink
   def u_sink(self):
@@ -52,17 +58,16 @@ class reader_top_block(gr.top_block):
     self.dac_rate = 1e6                 # DAC rate 
     self.adc_rate = 100e6/50            # ADC rate (2MS/s complex samples)
     self.decim     = 5                    # Decimation (downsampling factor)
-    self.ampl     = 0.1                  # Output signal amplitude (signal power vary for different RFX900 cards)
+    self.ampl     = 1                  # Output signal amplitude (signal power vary for different RFX900 cards)
     self.freq     = 910e6                # Modulation frequency (can be set between 902-920)
     self.rx_gain   = 20                   # RX Gain (gain at receiver)
     self.tx_gain   = 0                    # RFX900 no Tx gain option
 
-    # self.usrp_address_source = "addr=192.168.10.2,recv_frame_size=256"
-    # self.usrp_address_sink   = "addr=192.168.10.2,recv_frame_size=256"
+    self.usrp_address_source = "addr=192.168.10.2,recv_frame_size=256"
+    self.usrp_address_sink   = "addr=192.168.10.2,recv_frame_size=256"
 
-    self.usrp_address_source = "type=b200,serial=30B1FF8"
-    self.usrp_address_sink   = "type=b200,serial=30B1FF8"
-
+    # self.usrp_address_source = "type=b200,serial=30B1FF8"
+    # self.usrp_address_sink   = "type=b200,serial=30B1FF8"
 
     # Each FM0 symbol consists of ADC_RATE/BLF samples (2e6/40e3 = 50 samples)
     # 10 samples per symbol after matched filtering and decimation
@@ -100,7 +105,7 @@ class reader_top_block(gr.top_block):
       self.connect(self.to_complex, self.sink)
 
       #File sinks for logging (Remove comments to log data)
-      #self.connect(self.source, self.file_sink_source)
+      # self.connect(self.source, self.file_sink_source)
 
     else :  # Offline Data
       self.file_source               = blocks.file_source(gr.sizeof_gr_complex*1, "../misc/data/file_source_test",False)   ## instead of uhd.usrp_source
