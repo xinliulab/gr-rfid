@@ -93,8 +93,6 @@ class rfid_test(gr.top_block, Qt.QWidget):
         self.blocks_file_source_0.set_begin_tag(pmt.PMT_NIL)
         self.blocks_file_sink_3 = blocks.file_sink(gr.sizeof_gr_complex*1, '/home/hostpc-usrp/gr-rfid/misc/data/file_sink', False)
         self.blocks_file_sink_3.set_unbuffered(False)
-        self.blocks_file_sink_2_0_0 = blocks.file_sink(gr.sizeof_gr_complex*1, '/home/hostpc-usrp/gr-rfid/misc/data/gate', False)
-        self.blocks_file_sink_2_0_0.set_unbuffered(False)
         self.blocks_file_sink_2_0 = blocks.file_sink(gr.sizeof_gr_complex*1, '/home/hostpc-usrp/gr-rfid/misc/data/decoder', False)
         self.blocks_file_sink_2_0.set_unbuffered(False)
 
@@ -107,7 +105,6 @@ class rfid_test(gr.top_block, Qt.QWidget):
         self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_float_to_complex_0, 0))
         self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_float_to_complex_0, 1))
         self.connect((self.fir_filter_xxx_0, 0), (self.rfid_gate_0, 0))
-        self.connect((self.rfid_gate_0, 0), (self.blocks_file_sink_2_0_0, 0))
         self.connect((self.rfid_gate_0, 0), (self.rfid_tag_decoder_0, 0))
         self.connect((self.rfid_reader_0, 0), (self.blocks_multiply_const_vxx_0, 0))
         self.connect((self.rfid_tag_decoder_0, 1), (self.blocks_file_sink_2_0, 0))
@@ -196,5 +193,44 @@ def main(top_block_cls=rfid_test, options=None):
     qapp.aboutToQuit.connect(quitting)
     qapp.exec_()
 
+
+def main(top_block_cls=rfid_test, options=None):
+
+    if StrictVersion("4.5.0") <= StrictVersion(Qt.qVersion()) < StrictVersion("5.0.0"):
+        style = gr.prefs().get_string('qtgui', 'style', 'raster')
+        Qt.QApplication.setGraphicsSystem(style)
+    qapp = Qt.QApplication(sys.argv)
+
+    tb = top_block_cls()
+
+    tb.start()
+    tb.show()
+
+    def sig_handler(sig=None, frame=None):
+        Qt.QApplication.quit()
+
+    signal.signal(signal.SIGINT, sig_handler)
+    signal.signal(signal.SIGTERM, sig_handler)
+
+    timer = Qt.QTimer()
+    timer.start(500)
+    timer.timeout.connect(lambda: None)
+
+    def quitting():
+        tb.stop()
+        tb.wait()
+
+    qapp.aboutToQuit.connect(quitting)
+    qapp.exec_()
+
+    while(1):
+        inp = input("'Q' to quit \n")
+        if (inp == "q" or inp == "Q"):
+            break
+
+    tb.reader.print_results()
+    tb.stop()
+
+
 if __name__ == '__main__':
-    main()
+  main()

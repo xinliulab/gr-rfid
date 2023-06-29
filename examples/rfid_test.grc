@@ -116,60 +116,6 @@ blocks:
     coordinate: [760, 12.0]
     rotation: 0
     state: enabled
-- name: blocks_file_sink_0
-  id: blocks_file_sink
-  parameters:
-    affinity: ''
-    alias: ''
-    append: 'False'
-    comment: ''
-    file: /home/xin/gr-rfid/misc/data/matched_filter
-    type: complex
-    unbuffered: 'False'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [320, 396.0]
-    rotation: 180
-    state: true
-- name: blocks_file_sink_1
-  id: blocks_file_sink
-  parameters:
-    affinity: ''
-    alias: ''
-    append: 'False'
-    comment: ''
-    file: /home/xin/gr-rfid/misc/data/source
-    type: complex
-    unbuffered: 'False'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [64, 396.0]
-    rotation: 180
-    state: true
-- name: blocks_file_sink_2
-  id: blocks_file_sink
-  parameters:
-    affinity: ''
-    alias: ''
-    append: 'False'
-    comment: ''
-    file: /home/xin/gr-rfid/misc/data/gate
-    type: complex
-    unbuffered: 'False'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [560, 396.0]
-    rotation: 180
-    state: true
 - name: blocks_file_sink_2_0
   id: blocks_file_sink
   parameters:
@@ -177,7 +123,7 @@ blocks:
     alias: ''
     append: 'False'
     comment: ''
-    file: /home/xin/gr-rfid/misc/data/decoder
+    file: /home/hostpc-usrp/gr-rfid/misc/data/decoder
     type: complex
     unbuffered: 'False'
     vlen: '1'
@@ -195,16 +141,56 @@ blocks:
     alias: ''
     append: 'False'
     comment: ''
-    file: /home/xin/gr-rfid/misc/data/reader
-    type: float
+    file: /home/hostpc-usrp/gr-rfid/misc/data/gate
+    type: complex
     unbuffered: 'False'
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1016, 396.0]
+    coordinate: [536, 388.0]
     rotation: 180
+    state: true
+- name: blocks_file_sink_3
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: ''
+    file: /home/hostpc-usrp/gr-rfid/misc/data/file_sink
+    type: complex
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [528, 156.0]
+    rotation: 180
+    state: true
+- name: blocks_file_source_0
+  id: blocks_file_source
+  parameters:
+    affinity: ''
+    alias: ''
+    begin_tag: pmt.PMT_NIL
+    comment: ''
+    file: /home/hostpc-usrp/gr-rfid/misc/data/file_source_test
+    length: '0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    repeat: 'True'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [88, 252.0]
+    rotation: 0
     state: true
 - name: blocks_float_to_complex_0
   id: blocks_float_to_complex
@@ -585,7 +571,7 @@ blocks:
     bus_structure: null
     coordinate: [424, 116.0]
     rotation: 180
-    state: true
+    state: disabled
 - name: uhd_usrp_source_0
   id: uhd_usrp_source
   parameters:
@@ -955,23 +941,22 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [64, 236.0]
+    coordinate: [72, 124.0]
     rotation: 0
-    state: true
+    state: disabled
 
 connections:
+- [blocks_file_source_0, '0', fir_filter_xxx_0, '0']
+- [blocks_float_to_complex_0, '0', blocks_file_sink_3, '0']
 - [blocks_float_to_complex_0, '0', uhd_usrp_sink_0, '0']
 - [blocks_multiply_const_vxx_0, '0', blocks_float_to_complex_0, '0']
 - [blocks_multiply_const_vxx_0, '0', blocks_float_to_complex_0, '1']
-- [fir_filter_xxx_0, '0', blocks_file_sink_0, '0']
 - [fir_filter_xxx_0, '0', rfid_gate_0, '0']
-- [rfid_gate_0, '0', blocks_file_sink_2, '0']
+- [rfid_gate_0, '0', blocks_file_sink_2_0_0, '0']
 - [rfid_gate_0, '0', rfid_tag_decoder_0, '0']
-- [rfid_reader_0, '0', blocks_file_sink_2_0_0, '0']
 - [rfid_reader_0, '0', blocks_multiply_const_vxx_0, '0']
 - [rfid_tag_decoder_0, '0', rfid_reader_0, '0']
 - [rfid_tag_decoder_0, '1', blocks_file_sink_2_0, '0']
-- [uhd_usrp_source_0, '0', blocks_file_sink_1, '0']
 - [uhd_usrp_source_0, '0', fir_filter_xxx_0, '0']
 
 metadata:
