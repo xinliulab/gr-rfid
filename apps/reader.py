@@ -74,11 +74,11 @@ class reader_top_block(gr.top_block):
     self.num_taps     = [1] * 25 # matched to half symbol period
 
     ######## File sinks for debugging (1 for each block) #########
-    self.file_sink_source         = blocks.file_sink(gr.sizeof_gr_complex*1, "../misc/data/source", False)
-    self.file_sink_matched_filter = blocks.file_sink(gr.sizeof_gr_complex*1, "../misc/data/matched_filter", False)
-    self.file_sink_gate           = blocks.file_sink(gr.sizeof_gr_complex*1, "../misc/data/gate", False)
-    self.file_sink_decoder        = blocks.file_sink(gr.sizeof_gr_complex*1, "../misc/data/decoder", False)
-    self.file_sink_reader         = blocks.file_sink(gr.sizeof_float*1,      "../misc/data/reader", False)
+    self.file_sink_source         = blocks.file_sink(gr.sizeof_gr_complex*1, "/home/xin/gr-rfid/misc/data/source", False)
+    self.file_sink_matched_filter = blocks.file_sink(gr.sizeof_gr_complex*1, "/home/xin/gr-rfid/misc/data/matched_filter", False)
+    self.file_sink_gate           = blocks.file_sink(gr.sizeof_gr_complex*1, "/home/xin/gr-rfid/misc/data/gate", False)
+    self.file_sink_decoder        = blocks.file_sink(gr.sizeof_gr_complex*1, "/home/xin/gr-rfid/misc/data/decoder", False)
+    self.file_sink_reader         = blocks.file_sink(gr.sizeof_float*1,      "/home/xin/gr-rfid/misc/data/reader", False)
 
     ######## Blocks #########
     self.matched_filter = filter.fir_filter_ccc(self.decim, self.num_taps);
