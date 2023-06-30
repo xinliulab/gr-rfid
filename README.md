@@ -10,10 +10,11 @@ The code has been tested and confirmed to work with the following software versi
 - Python 3.8.10
 - GNU Radio 3.8.5.0
 - UHD 4.4.0
+- USRP X300 and N210
 
 ## YAML Files
 
-The YAML files have been redesigned and can now be utilized within GNU Radio flowgraph. 
+The YAML files have been redesigned and can now be utilized within GNU Radio flowgraph. Run rfid_test.grc or rfid_test_hint.py in the examples folder.
 
 
 

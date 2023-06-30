@@ -6,7 +6,7 @@
 #
 # GNU Radio Python Flow Graph
 # Title: Not titled yet
-# GNU Radio version: v3.8.5.0-6-g57bd109d
+# GNU Radio version: 3.8.5.0
 
 from distutils.version import StrictVersion
 
@@ -104,8 +104,8 @@ class rfid_test(gr.top_block, Qt.QWidget):
         ##################################################
         self.connect((self.blocks_file_source_0, 0), (self.fir_filter_xxx_0, 0))
         self.connect((self.blocks_float_to_complex_0, 0), (self.blocks_file_sink_3, 0))
-        self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_float_to_complex_0, 0))
         self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_float_to_complex_0, 1))
+        self.connect((self.blocks_multiply_const_vxx_0, 0), (self.blocks_float_to_complex_0, 0))
         self.connect((self.fir_filter_xxx_0, 0), (self.rfid_gate_0, 0))
         self.connect((self.rfid_gate_0, 0), (self.blocks_file_sink_2_0_0, 0))
         self.connect((self.rfid_gate_0, 0), (self.rfid_tag_decoder_0, 0))
