@@ -195,7 +195,15 @@ namespace gr {
     
       query_bits.insert(query_bits.end(), &Q_VALUE[FIXED_Q][0], &Q_VALUE[FIXED_Q][4]);
       crc_append(query_bits);
+      //shu chu fang wen bit xvlie
+           std::cout << "gen_query_bits:";     
+  for (float bit : query_bits) {
+    std::cout << bit << " ";
+  }
+  std::cout << std::endl;
+  
     }
+    
 
 
     void reader_impl::gen_ack_bits(const float * in)
@@ -203,7 +211,15 @@ namespace gr {
       ack_bits.resize(0);
       ack_bits.insert(ack_bits.end(), &ACK_CODE[0], &ACK_CODE[2]);
       ack_bits.insert(ack_bits.end(), &in[0], &in[16]);
+        // 输出应答比特序列
+     std::cout << "gen_ack_bits:";     
+  for (float bit : ack_bits) {
+    std::cout << bit << " ";
+  }
+  std::cout << std::endl;
+   
     }
+   
   
     void reader_impl::gen_query_adjust_bits()
     {
@@ -211,7 +227,14 @@ namespace gr {
       query_adjust_bits.insert(query_adjust_bits.end(), &QADJ_CODE[0], &QADJ_CODE[4]);
       query_adjust_bits.insert(query_adjust_bits.end(), &SESSION[0], &SESSION[2]);
       query_adjust_bits.insert(query_adjust_bits.end(), &Q_UPDN[1][0], &Q_UPDN[1][3]);
+          std::cout << "gen_query_adjust_bits:";     
+  for (float bit : query_adjust_bits) {
+    std::cout << bit << " ";
+  }
+  std::cout << std::endl;
+  
     }
+   
 
 
     /*

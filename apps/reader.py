@@ -14,8 +14,8 @@ print(os.getcwd())
 
 # print(dir(rfid))
 
-DEBUG = False
-# DEBUG = True
+# DEBUG = False
+DEBUG = True
 
 class reader_top_block(gr.top_block):
 
@@ -108,8 +108,8 @@ class reader_top_block(gr.top_block):
       # self.connect(self.source, self.file_sink_source)
 
     else :  # Offline Data
-      self.file_source               = blocks.file_source(gr.sizeof_gr_complex*1, "../misc/data/file_source_test",False)   ## instead of uhd.usrp_source
-      self.file_sink                  = blocks.file_sink(gr.sizeof_gr_complex*1,   "../misc/data/file_sink", False)     ## instead of uhd.usrp_sink
+      self.file_source               = blocks.file_source(gr.sizeof_gr_complex*1, "/home/xin/gr-rfid/misc/data/file_source_test",False)   ## instead of uhd.usrp_source
+      self.file_sink                  = blocks.file_sink(gr.sizeof_gr_complex*1,   "/home/xin/gr-rfid/misc/data/file_sink", False)     ## instead of uhd.usrp_sink
  
       ######## Connections ######### 
       self.connect(self.file_source, self.matched_filter)

@@ -114,9 +114,12 @@ namespace gr {
     std::vector<float>  tag_decoder_impl::tag_detection_RN16(std::vector<gr_complex> & RN16_samples_complex)
     {
       // detection + differential decoder (since Tag uses FM0)
+ 
       std::vector<float> tag_bits,dist;
       float result;
       int prev = 1,index_T=0;
+      
+      
       
       for (int j = 0; j < RN16_samples_complex.size()/2 ; j ++ )
       {
@@ -138,8 +141,24 @@ namespace gr {
           prev = -1;    
         }
       }
+      
+//      for (int j = 0; j < RN16_samples_complex.size(); j++)
+//{
+//    std::cout << "RN16_samples_complex[" << j << "] = " << std::real(RN16_samples_complex[j]) << " + " << std::imag(RN16_samples_complex[j]) << "j" << std::endl;
+//}
+        //输出 tag_bits
+     std::cout << "RN16 tag_bits:";
+        
+  for (const auto &bit : tag_bits)
+  {
+    std::cout << bit << " ";
+  }
+  std::cout << std::endl;
+   
       return tag_bits;
+     
     }
+    
 
 
     std::vector<float>  tag_decoder_impl::tag_detection_EPC(std::vector<gr_complex> & EPC_samples_complex, int index)
@@ -189,6 +208,15 @@ namespace gr {
           prev = -1;    
         }
       }
+              // 输出 tag_bits
+     std::cout << "EPC tag_bits:";
+        
+ for (const auto &bit : tag_bits)
+  {
+    std::cout << bit << " ";
+  }
+  std::cout << std::endl;
+ 
       return tag_bits;
     }
 
@@ -225,30 +253,31 @@ namespace gr {
         // std::cout << " Decoder Work!!!" << std::endl;
         RN16_index = tag_sync(in,ninput_items[0]);
 
-        /*
+        
         for (int j = 0; j < ninput_items[0]; j ++ )
         {
           out_2[written_sync] = in[j];
            written_sync ++;
         }    
         produce(1,written_sync);
-        */
+        
 
 
         for (float j = RN16_index; j < ninput_items[0]; j += n_samples_TAG_BIT/2 )
         {
           number_of_half_bits++;
           int k = round(j);
+          //kongzhi RN16 chansheng
           RN16_samples_complex.push_back(in[k]);
 
-          //out_2[written_sync] = in[j];
-           //written_sync ++;
+          out_2[written_sync] = in[int(j)];
+           written_sync ++;
 
           if (number_of_half_bits == 2*(RN16_BITS-1))
           {
             //out_2[written_sync] = h_est;
              //written_sync ++;  
-            //produce(1,written_sync);        
+            produce(1,written_sync);        
             break;
           }
         }    
@@ -257,6 +286,7 @@ namespace gr {
         if (number_of_half_bits == 2*(RN16_BITS-1))
         {  
           GR_LOG_INFO(d_debug_logger, "RN16 DECODED");
+          //std::cout << "RN16 DECODED..."<<std::endl;
           RN16_bits  = tag_detection_RN16(RN16_samples_complex);
 
           for(int bit=0; bit<RN16_bits.size(); bit++)
@@ -347,6 +377,7 @@ namespace gr {
             }
 
             reader_state->reader_stats.n_epc_correct+=1;
+std::cout << "EPC Decoder Successfully!:"<<std::endl;	
 
             int result = 0;
             for(int i = 0 ; i < 8 ; ++i)
